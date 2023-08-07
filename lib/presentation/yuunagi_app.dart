@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:yuunagi/presentation/pages/home_page.dart';
 import 'package:yuunagi/presentation/pages/lists_page.dart';
@@ -10,6 +11,7 @@ import 'package:yuunagi/presentation/widgets/yuunagi_drawer.dart';
 import 'package:yuunagi/presentation/widgets/search_fab.dart';
 import 'package:yuunagi/presentation/widgets/yuunagi_rail.dart';
 
+@RoutePage()
 class YuunagiApp extends StatefulWidget {
   const YuunagiApp({super.key});
 

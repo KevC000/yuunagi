@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+
 
 class SearchFAB extends StatelessWidget {
   const SearchFAB({super.key});
@@ -8,7 +9,7 @@ class SearchFAB extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        context.push('/search');
+       context.router.pushNamed('/search');
       },
       backgroundColor: Colors.redAccent[100],
       child: const Icon(Icons.search),

@@ -1,6 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
+@RoutePage()
 class DictionarySearchPage extends StatefulWidget {
   const DictionarySearchPage({super.key});
 
@@ -15,7 +16,7 @@ class _DictionarySearchPageState extends State<DictionarySearchPage> {
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
-              context.pop();
+              context.router.pop();
             },
             icon: const Icon(Icons.arrow_back)),
         title: TextField(

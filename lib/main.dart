@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yuunagi/util/router.dart';
 
-final _goRouter = AppRouter().router;
 
 void main() {
   runApp(const MainApp());
@@ -16,7 +15,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  
+  final _appRouter = AppRouter();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,7 @@ class _MainAppState extends State<MainApp> {
         ),
       ),
       title: 'Yuunagi',
-      routerConfig: _goRouter,
+      routerConfig: _appRouter.config(),
     );
   }
 }
