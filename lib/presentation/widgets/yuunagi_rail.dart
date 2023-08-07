@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 class YuunagiRail extends StatefulWidget {
-  const YuunagiRail(
-      {super.key, required this.selectedIndex, required this.changeScreen});
+  const YuunagiRail({super.key, required this.changeScreen});
 
-  final int selectedIndex;
   final Function changeScreen;
 
   @override
@@ -12,6 +10,8 @@ class YuunagiRail extends StatefulWidget {
 }
 
 class _YuunagiRailState extends State<YuunagiRail> {
+  var selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -21,6 +21,7 @@ class _YuunagiRailState extends State<YuunagiRail> {
         ),
         child: IntrinsicHeight(
           child: NavigationRail(
+            selectedIndex: selectedIndex,
             labelType: NavigationRailLabelType.all,
             selectedIconTheme: const IconThemeData(
               color: Colors.redAccent,
@@ -29,6 +30,9 @@ class _YuunagiRailState extends State<YuunagiRail> {
               color: Colors.redAccent,
             ),
             onDestinationSelected: (int index) {
+              setState(() {
+                selectedIndex = index;
+              });
               switch (index) {
                 case 0:
                   widget.changeScreen(0);
@@ -81,7 +85,6 @@ class _YuunagiRailState extends State<YuunagiRail> {
                 label: Text('Sign out'),
               ),
             ],
-            selectedIndex: widget.selectedIndex,
           ),
         ),
       ),

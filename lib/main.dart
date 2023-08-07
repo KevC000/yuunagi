@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yuunagi/util/router.dart';
-
+import 'package:yuunagi/util/routers/app_router.dart';
 
 void main() {
   runApp(const MainApp());

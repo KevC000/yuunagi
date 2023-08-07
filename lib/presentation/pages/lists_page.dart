@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class ListsPage extends StatefulWidget {
   const ListsPage({super.key});
 
@@ -11,8 +13,6 @@ class _ListsPageState extends State<ListsPage> {
   @override
   Widget build(BuildContext context) {
 
-    return Container(
-      child: const Text('Lists'),
-    );
+    return const Text('Lists');
   }
 }
