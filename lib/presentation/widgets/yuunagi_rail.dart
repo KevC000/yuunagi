@@ -24,10 +24,10 @@ class _YuunagiRailState extends State<YuunagiRail> {
             selectedIndex: selectedIndex,
             labelType: NavigationRailLabelType.all,
             selectedIconTheme: const IconThemeData(
-              color: Colors.redAccent,
+              color: Color.fromRGBO(190, 0, 41, 1),
             ),
             selectedLabelTextStyle: const TextStyle(
-              color: Colors.redAccent,
+              color: Color.fromRGBO(190, 0, 41, 1),
             ),
             onDestinationSelected: (int index) {
               setState(() {

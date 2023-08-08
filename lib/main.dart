@@ -25,10 +25,10 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        splashColor: Colors.red,
+        splashColor: const Color.fromRGBO(190, 0, 41, 1),
         canvasColor: Colors.white,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.red,
+          backgroundColor: Color.fromRGBO(190, 0, 41, 1),
           foregroundColor: Colors.white,
           elevation: 0,
           iconTheme: IconThemeData(

@@ -15,7 +15,7 @@ class YuunagiDrawer extends StatelessWidget {
             height: 150,
             child: DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.redAccent,
+                color: Color.fromRGBO(190, 0, 41, 1),
               ),
               child: Center(child: Text('Yonagi')),
             ),

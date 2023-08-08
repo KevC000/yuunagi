@@ -1,10 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:jm_dict/jm_dict.dart';
 import 'package:yuunagi/presentation/widgets/dictionary_search_widget.dart';
 import 'package:yuunagi/presentation/widgets/yuunagi_drawer.dart';
 import 'package:yuunagi/presentation/widgets/search_fab.dart';
 import 'package:yuunagi/presentation/widgets/yuunagi_rail.dart';
 import 'package:yuunagi/util/routers/app_router.gr.dart';
+
+var jmdict = JMDict();
 
 @RoutePage()
 class YuunagiApp extends StatefulWidget {
@@ -17,6 +20,8 @@ class YuunagiApp extends StatefulWidget {
 class _YuunagiAppState extends State<YuunagiApp> {
   @override
   Widget build(BuildContext context) {
+    jmdict.initFromAsset(assetPath: 'assets/raw/JMdict_e_examp.gz');
+
     const screens = [
       HomePageRoute(),
       ListsPageRoute(),
@@ -27,7 +32,6 @@ class _YuunagiAppState extends State<YuunagiApp> {
     ];
 
     final currentWidth = MediaQuery.of(context).size.width;
-
     final drawer = YuunagiDrawer(changeScreen: (index) {
       context.navigateTo(screens[index]);
     });
@@ -49,10 +53,12 @@ class _YuunagiAppState extends State<YuunagiApp> {
           const VerticalDivider(thickness: 1, width: 1),
           const Expanded(child: AutoRouter()),
           currentWidth >= 900
-              ? const Row(
+              ?Row(
                   children: [
-                    VerticalDivider(thickness: 1, width: 1),
-                    SizedBox(width: 275, child: DictionarySearchWidget()),
+                    const VerticalDivider(thickness: 1, width: 1),
+                    SizedBox(
+                        width: currentWidth >= 1200 ? (currentWidth*.225) : 275,
+                        child: const DictionarySearchWidget()),
                   ],
                 )
               : const SizedBox(),

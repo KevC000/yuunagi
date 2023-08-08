@@ -9,6 +9,7 @@ class AppRouter extends $AppRouter {
           path: '/',
           page: YuunagiAppRoute.page,
           initial: true,
+    
           children: [
                     AutoRoute(
                 page: HomePageRoute.page,

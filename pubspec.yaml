@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.0.5 <4.0.0'
 
 dependencies:
+  get: ^4.6.5
   auto_route: ^7.8.0
   jm_dict: ^0.2.0
   kanji_dictionary: ^1.0.5+1
