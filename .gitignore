@@ -43,5 +43,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-assets/raw/jmdict.json
-assets/raw/kanjidic2.json
+assets/raw/JMdict_e_examp.gz

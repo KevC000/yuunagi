@@ -8,6 +8,8 @@ environment:
 
 dependencies:
   auto_route: ^7.8.0
+  jm_dict: ^0.2.0
+  kanji_dictionary: ^1.0.5+1
   flutter:
     sdk: flutter
     
@@ -22,5 +24,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/raw/jmdict.json
-    - assets/raw/kanjidic.json
+    - assets/raw/JMdict_e_examp.gz
+
