@@ -147,14 +147,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
-  kanji_dictionary:
-    dependency: "direct main"
-    description:
-      name: kanji_dictionary
-      sha256: "6b0e11f674e31004323db15b5dfcace9f1295e4055c73ddb78bf41e4bae8933d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.5+1"
   lints:
     dependency: transitive
     description:

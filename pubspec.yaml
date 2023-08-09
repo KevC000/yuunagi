@@ -9,7 +9,6 @@ environment:
 dependencies:
   get: ^4.6.5
   jm_dict: ^0.2.0
-  kanji_dictionary: ^1.0.5+1
   flutter:
     sdk: flutter
     

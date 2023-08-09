@@ -4,20 +4,19 @@ import 'package:jm_dict/jm_dict.dart';
 
 class DictionaryController extends GetxController {
   JMDict jmdict = JMDict();
+  var wordResults = RxList<JMDictEntry>([]);
+  var wordDetail = Rx<JMDictEntry?>(null);
 
   var dictionarySearchQuery = RxString('');
   final textEditingController = TextEditingController();
-  var wordSearchResults = RxList<JMDictEntry>([]);
-  var kanjiSearchResults = RxList<JMDictEntry>([]);
+  final wordDetailPage = const Text('WordDetailPage');
 
-  final mainContent = [];
-  var contentIndex = RxInt(0);
-
-  
+  var screenIsDetail = RxBool(false);
 
   @override
   void onInit() {
     jmdict.initFromAsset(assetPath: 'assets/raw/JMdict_e_examp.gz');
+
     textEditingController.text = dictionarySearchQuery.value;
     textEditingController.addListener(() {
       dictionarySearchQuery.value = textEditingController.text;
@@ -29,7 +28,13 @@ class DictionaryController extends GetxController {
     dictionarySearchQuery.value = query;
   }
 
-  void searchWord() {
-    jmdict.search(keyword: dictionarySearchQuery.value);
+void searchWord() {
+    final query = dictionarySearchQuery.value;
+    final results = jmdict.search(keyword: query);
+    wordResults.value = results ?? [];// Add this
+  }
+
+  void setWordDetail(JMDictEntry word) {
+    wordDetail.value = word;
   }
 }

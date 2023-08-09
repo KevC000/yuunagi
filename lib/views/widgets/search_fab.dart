@@ -10,7 +10,7 @@ class SearchFAB extends GetView<DictionaryController> {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        Get.to(const DictionarySearchPage());
+        Get.to(() => const DictionarySearchPage());
       },
       backgroundColor: const Color.fromRGBO(225, 74, 107, 1),
       child: const Icon(Icons.search),
