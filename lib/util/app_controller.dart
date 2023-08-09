@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 class AppController extends GetxController {
-  String dictionarySearchQuery = 'test';
+  String dictionarySearchQuery = '';
 
   void setDictionarySearchQuery(String query) {
     dictionarySearchQuery = query;
