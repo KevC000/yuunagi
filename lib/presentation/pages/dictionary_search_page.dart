@@ -1,17 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../util/app_controller.dart';
 
 @RoutePage()
-class DictionarySearchPage extends StatefulWidget {
+class DictionarySearchPage extends StatelessWidget {
   const DictionarySearchPage({super.key});
 
   @override
-  State<DictionarySearchPage> createState() => _DictionarySearchPageState();
-}
-
-class _DictionarySearchPageState extends State<DictionarySearchPage> {
-  @override
   Widget build(BuildContext context) {
+    final AppController controller = Get.find();
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -20,6 +19,11 @@ class _DictionarySearchPageState extends State<DictionarySearchPage> {
             },
             icon: const Icon(Icons.arrow_back)),
         title: TextField(
+          onChanged: (value) {
+            controller.setDictionarySearchQuery(value);
+          },
+          controller:
+              TextEditingController(text: controller.dictionarySearchQuery),
           autofocus: true,
           decoration: InputDecoration(
             fillColor: Colors.white,

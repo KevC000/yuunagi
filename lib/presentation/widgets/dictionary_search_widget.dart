@@ -1,20 +1,24 @@
 import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:yuunagi/util/app_controller.dart';
 
 @RoutePage()
-class DictionarySearchWidget extends StatefulWidget {
+class DictionarySearchWidget extends StatelessWidget {
   const DictionarySearchWidget({super.key});
 
   @override
-  State<DictionarySearchWidget> createState() => _DictionarySearchWidgetState();
-}
-
-class _DictionarySearchWidgetState extends State<DictionarySearchWidget> {
-  @override
   Widget build(BuildContext context) {
+    final AppController controller = Get.find();
+
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          onChanged: (value) {
+            controller.setDictionarySearchQuery(value);
+          },
+          controller:
+              TextEditingController(text: controller.dictionarySearchQuery),
           autofocus: true,
           decoration: InputDecoration(
             fillColor: Colors.white,

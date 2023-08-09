@@ -1,25 +1,24 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:jm_dict/jm_dict.dart';
 import 'package:yuunagi/presentation/widgets/dictionary_search_widget.dart';
 import 'package:yuunagi/presentation/widgets/yuunagi_drawer.dart';
 import 'package:yuunagi/presentation/widgets/search_fab.dart';
 import 'package:yuunagi/presentation/widgets/yuunagi_rail.dart';
+import 'package:yuunagi/util/app_controller.dart';
 import 'package:yuunagi/util/routers/app_router.gr.dart';
 
-var jmdict = JMDict();
+
 
 @RoutePage()
-class YuunagiApp extends StatefulWidget {
+class YuunagiApp extends StatelessWidget {
   const YuunagiApp({super.key});
 
   @override
-  State<YuunagiApp> createState() => _YuunagiAppState();
-}
-
-class _YuunagiAppState extends State<YuunagiApp> {
-  @override
   Widget build(BuildContext context) {
+    final jmdict = JMDict();
+    final AppController controller = Get.put(AppController());
     jmdict.initFromAsset(assetPath: 'assets/raw/JMdict_e_examp.gz');
 
     const screens = [
@@ -30,7 +29,7 @@ class _YuunagiAppState extends State<YuunagiApp> {
       SettingsPageRoute(),
       ProfilePageRoute(),
     ];
-
+    const fab = SearchFAB();
     final currentWidth = MediaQuery.of(context).size.width;
     final drawer = YuunagiDrawer(changeScreen: (index) {
       context.navigateTo(screens[index]);
@@ -45,7 +44,7 @@ class _YuunagiAppState extends State<YuunagiApp> {
         centerTitle: true,
       ),
       drawer: currentWidth < 600 ? drawer : null,
-      floatingActionButton: currentWidth < 900 ? const SearchFAB() : null,
+      floatingActionButton: currentWidth < 900 ? fab : null,
       body: Row(
         children: <Widget>[
           currentWidth >= 600 && currentWidth < 1200 ? rail : const SizedBox(),
@@ -53,11 +52,12 @@ class _YuunagiAppState extends State<YuunagiApp> {
           const VerticalDivider(thickness: 1, width: 1),
           const Expanded(child: AutoRouter()),
           currentWidth >= 900
-              ?Row(
+              ? Row(
                   children: [
                     const VerticalDivider(thickness: 1, width: 1),
                     SizedBox(
-                        width: currentWidth >= 1200 ? (currentWidth*.225) : 275,
+                        width:
+                            currentWidth >= 1200 ? (currentWidth * .225) : 275,
                         child: const DictionarySearchWidget()),
                   ],
                 )

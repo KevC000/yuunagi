@@ -30,9 +30,9 @@ class _YuunagiRailState extends State<YuunagiRail> {
               color: Color.fromRGBO(190, 0, 41, 1),
             ),
             onDestinationSelected: (int index) {
-              setState(() {
+
                 selectedIndex = index;
-              });
+
               switch (index) {
                 case 0:
                   widget.changeScreen(0);
