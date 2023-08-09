@@ -1,23 +1,16 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../util/app_controller.dart';
+import 'package:yuunagi/controllers/dictionary_controller.dart';
 
-@RoutePage()
-class DictionarySearchPage extends StatelessWidget {
-  const DictionarySearchPage({super.key});
+class DictionarySearchWidget extends StatelessWidget {
+  const DictionarySearchWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AppController controller = Get.find();
+    final DictionaryController controller = Get.find();
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              context.router.pop();
-            },
-            icon: const Icon(Icons.arrow_back)),
         title: TextField(
           onChanged: (value) {
             controller.setDictionarySearchQuery(value);

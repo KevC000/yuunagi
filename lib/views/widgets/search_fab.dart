@@ -1,18 +1,16 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yuunagi/util/app_controller.dart';
-import 'package:yuunagi/util/routers/app_router.gr.dart';
+import 'package:yuunagi/controllers/dictionary_controller.dart';
+import 'package:yuunagi/views/pages/dictionary_search_page.dart';
 
-class SearchFAB extends GetView<AppController> {
+class SearchFAB extends GetView<DictionaryController> {
   const SearchFAB({super.key});
-
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-    context.router.push(const DictionarySearchPageRoute());
+        Get.to(const DictionarySearchPage());
       },
       backgroundColor: const Color.fromRGBO(225, 74, 107, 1),
       child: const Icon(Icons.search),

@@ -78,6 +78,7 @@ class YuunagiDrawer extends StatelessWidget {
             title: const Text('Profile'),
             onTap: () {
               changeScreen(5);
+              Navigator.of(context).pop();
             },
           ),
           ListTile(
@@ -85,7 +86,9 @@ class YuunagiDrawer extends StatelessWidget {
               Icons.logout_rounded,
             ),
             title: const Text('Sign out'),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pop();
+            },
           ),
         ],
       ),
