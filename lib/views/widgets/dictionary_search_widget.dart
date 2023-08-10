@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:yuunagi/controllers/dictionary_controller.dart';
-import 'package:yuunagi/views/widgets/word_result_listview.dart';
 
 class DictionarySearchWidget extends StatelessWidget {
   const DictionarySearchWidget({super.key});
