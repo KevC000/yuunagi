@@ -7,10 +7,13 @@ environment:
   sdk: '>=3.0.5 <4.0.0'
 
 dependencies:
-  get: ^4.6.5
-  jm_dict: ^0.2.0
   flutter:
     sdk: flutter
+  get: ^4.6.5
+  sqflite: ^2.3.0
+  path_provider: ^2.1.0
+  xml: ^6.3.0
+
     
 dev_dependencies:
   flutter_test:
@@ -20,5 +23,6 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/raw/JMdict_e_examp.gz
+    - assets/raw/jmdict.xml
+    - assets/raw/kanjidic.xml
 

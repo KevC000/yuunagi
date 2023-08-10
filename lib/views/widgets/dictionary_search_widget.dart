@@ -44,8 +44,16 @@ class DictionarySearchWidget extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-              child: Obx(() =>
-                  WordResultListView(words: controller.wordResults.value))),
+            child: Obx(() {
+              if (controller.isLoading.value) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (controller.wordResults.isEmpty) {
+                return const Center(child: Text("No results found"));
+              } else {
+            return const Text('lol');
+              }
+            }),
+          ),
         ],
       ),
     );

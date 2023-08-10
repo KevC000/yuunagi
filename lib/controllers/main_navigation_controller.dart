@@ -16,6 +16,13 @@ class MainNavigationController extends GetxController {
     const ProfilePage(),
   ];
   var screenIndex = RxInt(0);
+
+  @override
+  void dispose() {
+    screenIndex.close();
+    super.dispose();
+  }
+
   void changeScreens(int index) {
     screenIndex.value = index;
   }

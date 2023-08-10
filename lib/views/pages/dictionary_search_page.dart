@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yuunagi/views/widgets/word_result_listview.dart';
 import '../../controllers/dictionary_controller.dart';
 
 class DictionarySearchPage extends StatelessWidget {
@@ -46,12 +45,21 @@ class DictionarySearchPage extends StatelessWidget {
           ),
         ),
       ),
-body: Column(
+      body: Column(
         children: [
-          Expanded(child: Obx(() => WordResultListView(words: controller.wordResults.value))),
+          Expanded(
+            child: Obx(() {
+              if (controller.isLoading.value) {
+                return const Center(child: CircularProgressIndicator());
+              } else if (controller.wordResults.isEmpty) {
+                return const Center(child: Text("No results found"));
+              } else {
+                 return const Text('lol');
+              }
+            }),
+          ),
         ],
       ),
-
     );
   }
 }
