@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 
+import '../models/kanji.dart';
+import '../models/word.dart';
+
 class DictionaryController extends GetxController {
-  var wordResults = RxList<String>([]);
-  var wordDetail = Rx<String>('');
-  var isLoading = RxBool(false);
+  RxList<Kanji> kanjiResults = RxList<Kanji>([]);
+  RxList<String> wordResults = RxList<String>([]);
+  Rx<Word?> wordDetail = Rx<Word?>(null);
+  RxBool isLoading = RxBool(false);
 
   var dictionarySearchQuery = RxString('');
   final textEditingController = TextEditingController();
@@ -25,7 +29,7 @@ class DictionaryController extends GetxController {
   @override
   void dispose() {
     wordResults.close();
-    wordDetail.close();
+    kanjiResults.close();
     dictionarySearchQuery.close();
     textEditingController.dispose();
     screenIsDetail.close();

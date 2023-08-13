@@ -1,8 +1,12 @@
+extension on List<String> {
+  String toCSV() => join(', ');
+}
+
 class Word {
-  final int sequence; // Sequence number as a unique ID
-  final List<KanjiElement> kanjiElements; // *: 0 or more
-  final List<ReadingElement> readingElements; // *: 0 or more
-  final List<SenseElement> senseElements; // *: 0 or more
+  final int sequence;
+  final List<KanjiElement> kanjiElements;
+  final List<ReadingElement> readingElements;
+  final List<SenseElement> senseElements;
 
   Word({
     required this.sequence,
@@ -10,44 +14,69 @@ class Word {
     this.readingElements = const [],
     this.senseElements = const [],
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'sequence': sequence,
+      'kanjiElements': kanjiElements.map((ke) => ke.toMap()).toList(),
+      'readingElements': readingElements.map((re) => re.toMap()).toList(),
+      'senseElements': senseElements.map((se) => se.toMap()).toList()
+    };
+  }
 }
 
 class KanjiElement {
-  final String character; // Character itself
-  final List<String> info; // *: 0 or more
-  final List<String> priority; // *: 0 or more
+  final String character;
+  final List<String> info;
+  final List<String> priority;
 
   KanjiElement({
     required this.character,
     this.info = const [],
     this.priority = const [],
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'character': character,
+      'info': info.toCSV(),
+      'priority': priority.toCSV()
+    };
+  }
 }
 
 class ReadingElement {
-  final String reading; // Kana reading
-  final List<String> info; // *: 0 or more
-  final List<String> restrictions; // *: 0 or more
+  final String reading;
+  final List<String> info;
+  final List<String> restrictions;
 
   ReadingElement({
     required this.reading,
     this.info = const [],
     this.restrictions = const [],
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'reading': reading,
+      'info': info.toCSV(),
+      'restrictions': restrictions.toCSV()
+    };
+  }
 }
 
 class SenseElement {
-  final List<String> stagk; // *: 0 or more
-  final List<String> stagr; // *: 0 or more
-  final List<String> pos; // *: 0 or more
-  final List<String> xref; // *: 0 or more
-  final List<String> ant; // *: 0 or more
-  final List<String> field; // *: 0 or more
-  final List<String> misc; // *: 0 or more
-  final List<String> lsource; // *: 0 or more
-  final List<String> dial; // *: 0 or more
-  final List<String> gloss; // *: 0 or more
-  final String? example; // ?: 0 or 1
+  final List<String> stagk;
+  final List<String> stagr;
+  final List<String> pos;
+  final List<String> xref;
+  final List<String> ant;
+  final List<String> field;
+  final List<String> misc;
+  final List<String> lsource;
+  final List<String> dial;
+  final List<String> gloss;
+  final String? example;
 
   SenseElement({
     this.stagk = const [],
@@ -62,4 +91,20 @@ class SenseElement {
     this.gloss = const [],
     this.example,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'stagk': stagk.toCSV(),
+      'stagr': stagr.toCSV(),
+      'pos': pos.toCSV(),
+      'xref': xref.toCSV(),
+      'ant': ant.toCSV(),
+      'field': field.toCSV(),
+      'misc': misc.toCSV(),
+      'lsource': lsource.toCSV(),
+      'dial': dial.toCSV(),
+      'gloss': gloss.toCSV(),
+      'example': example
+    };
+  }
 }

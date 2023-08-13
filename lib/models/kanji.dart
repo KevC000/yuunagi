@@ -1,50 +1,147 @@
 class Kanji {
-  final String literal; // The kanji character itself
-  final ReadingMeaning? readingMeaning; // ?: 0 or 1
+  final List<Character> characters;
 
-  // Other fields like grade, stroke count, etc. could be added similarly
+  Kanji({required this.characters});
+}
 
-  Kanji({
+class Character {
+  final String literal;
+  final Codepoint codepoint;
+  final Radical radical;
+  final Misc misc;
+  final List<DicNumber>? dicNumbers;
+  final List<QueryCode>? queryCodes;
+  final ReadingMeaning? readingMeaning;
+
+  Character({
     required this.literal,
+    required this.codepoint,
+    required this.radical,
+    required this.misc,
+    this.dicNumbers,
+    this.queryCodes,
     this.readingMeaning,
   });
 }
 
-class ReadingMeaning {
-  final List<RMGroup> rmgroup; // RMGroup (Reading and Meaning Group)
+class Codepoint {
+  final List<CpValue> cpValues;
 
-  ReadingMeaning({
-    required this.rmgroup,
+  Codepoint({required this.cpValues});
+}
+
+class CpValue {
+  final String value;
+  final String cpType;
+
+  CpValue({required this.value, required this.cpType});
+}
+
+class Radical {
+  final List<RadValue> radValues;
+
+  Radical({required this.radValues});
+}
+
+class RadValue {
+  final String value;
+  final String radType;
+
+  RadValue({required this.value, required this.radType});
+}
+
+class Misc {
+  final int? grade;
+  final List<int> strokeCount;
+  final List<Variant>? variants;
+  final int? freq;
+  final List<String>? radNames;
+  final int? jlpt;
+
+  Misc({
+    this.grade,
+    required this.strokeCount,
+    this.variants,
+    this.freq,
+    this.radNames,
+    this.jlpt,
   });
 }
 
-class RMGroup {
-  final List<Reading> readings; // *: 0 or more
-  final List<Meaning> meanings; // *: 0 or more
+class Variant {
+  final String value;
+  final String varType;
 
-  RMGroup({
-    this.readings = const [],
-    this.meanings = const [],
+  Variant({required this.value, required this.varType});
+}
+
+class DicNumber {
+  final String value;
+  final String drType;
+  final String? mVol;
+  final String? mPage;
+
+  DicNumber({
+    required this.value,
+    required this.drType,
+    this.mVol,
+    this.mPage,
   });
+}
+
+class QueryCode {
+  final String value;
+  final String qcType;
+  final String? skipMisclass;
+
+  QueryCode({
+    required this.value,
+    required this.qcType,
+    this.skipMisclass,
+  });
+}
+
+class ReadingMeaning {
+  final List<RMGroup>? rmGroups;
+  final List<Nanori>? nanoris;
+
+  ReadingMeaning({this.rmGroups, this.nanoris});
+}
+
+class RMGroup {
+  final List<Reading> readings;
+  final List<Meaning> meanings; // Use the Meaning class instead of String
+
+  RMGroup({required this.readings, required this.meanings});
 }
 
 class Reading {
   final String value;
-  final String
-      type; // This could represent the type like 'ja_on', 'ja_kun', etc.
+  final String rType;
+  final String? onType; // optional attribute
+  final String? rStatus; // optional attribute
 
-  Reading({
-    required this.value,
-    required this.type,
-  });
+  Reading(
+      {required this.value, required this.rType, this.onType, this.rStatus});
 }
 
 class Meaning {
   final String value;
-  final String? lang; // If not provided, it's English by default
+  final String? mLang;
 
-  Meaning({
-    required this.value,
-    this.lang,
-  });
+  Meaning({required this.value, this.mLang});
+
+  Map<String, dynamic> toMap() {
+    return {'value': value, 'mLang': mLang};
+  }
+
+  static Meaning fromMap(Map<String, dynamic> map) {
+    return Meaning(value: map['value'], mLang: map['mLang']);
+  }
+}
+
+class Nanori {
+  final String value;
+
+  Nanori({required this.value});
 }
